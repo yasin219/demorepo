@@ -6,7 +6,7 @@ app.use(bodyParser.json())
 const dbConfig = require('./config/database.config.js');
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-mongoose.connect(dbConfig.url || 'mongodb://172.31.2.39:27017/crud-node-express', {
+mongoose.connect(dbConfig.url, {
     useNewUrlParser: true
 }).then(() => {
     console.log("Databse Connected Successfully!!");    
