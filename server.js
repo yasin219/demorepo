@@ -6,7 +6,7 @@ app.use(bodyParser.json())
 const dbConfig = require('./config/database.config.js');
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-mongoose.connect(dbConfig.url, {
+mongoose.connect(dbConfig.url || 'mongodb://172.31.2.39:27017/crud-node-express', {
     useNewUrlParser: true
 }).then(() => {
     console.log("Databse Connected Successfully!!");    
@@ -17,8 +17,9 @@ mongoose.connect(dbConfig.url, {
 app.get('/', (req, res) => {
     res.json({"message": "Hello Crud Node Express"});
 });
-app.listen(3000, () => {
-    console.log("Server is listening on port 3000");
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+    console.log(`Server is listening on port ${port}`);
 });
 const UserRoute = require('./app/routes/User')
 app.use('/user',UserRoute)
