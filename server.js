@@ -17,9 +17,10 @@ mongoose.connect(dbConfig.url, {
 app.get('/', (req, res) => {
     res.json({"message": "Hello Crud Node Express"});
 });
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8081;
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}`);
 });
 const UserRoute = require('./app/routes/User')
 app.use('/user',UserRoute)
+
