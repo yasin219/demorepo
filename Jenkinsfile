@@ -24,12 +24,6 @@ pipeline {
             }
         }
 
-        stage('Build') {
-            steps {
-                bat 'npm run build || echo No build script found, continuing...'
-            }
-        }
-
         stage('Package') {
             steps {
                 bat 'powershell Compress-Archive -Path * -DestinationPath ${VERSION_LABEL}.zip'
@@ -38,9 +32,7 @@ pipeline {
 
         stage('Upload to S3') {
             steps {
-                bat """
-                aws s3 cp ${VERSION_LABEL}.zip s3://${S3_BUCKET}/
-                """
+                bat "aws s3 cp ${VERSION_LABEL}.zip s3://${S3_BUCKET}/"
             }
         }
 
