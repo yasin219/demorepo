@@ -26,7 +26,8 @@ pipeline {
 
         stage('Package') {
             steps {
-                bat 'powershell Compress-Archive -Path * -DestinationPath ${VERSION_LABEL}.zip'
+                bat 'powershell Compress-Archive -Path * -DestinationPath %VERSION_LABEL%.zip'
+
             }
         }
 
