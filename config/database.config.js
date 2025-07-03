@@ -1,8 +1,3 @@
-
-
 module.exports = {
-    // url: 'mongodb://"admin":"MySecureAdmin123"@13.204.98.243:27017/adminauthSource=admin'
-   url: "mongodb://myUserAdmin:MySecurePass123@13.204.98.243:27017/admin"
-
-
+  url: process.env.MONGO_URL || "mongodb://admin:admin123@localhost:27017/mydatabase?authSource=admin"
 }
